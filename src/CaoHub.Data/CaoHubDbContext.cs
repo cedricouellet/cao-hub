@@ -1,7 +1,7 @@
-﻿using CaoHub.Data.Models;
+﻿using CaoHub.Data.ReceiptManagement.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CaoHub.Data.DataContext
+namespace CaoHub.Data
 {
     /// <summary>
     /// The main data context for the CaoHub application

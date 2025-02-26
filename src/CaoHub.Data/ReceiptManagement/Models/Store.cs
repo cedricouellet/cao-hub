@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CaoHub.Data.Models
+namespace CaoHub.Data.ReceiptManagement.Models
 {
     /// <summary>
     /// An entity representing a store

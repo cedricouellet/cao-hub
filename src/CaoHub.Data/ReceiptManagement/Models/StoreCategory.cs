@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CaoHub.Data.Models
+namespace CaoHub.Data.ReceiptManagement.Models
 {
     /// <summary>
     /// The entity representing a category of stores
