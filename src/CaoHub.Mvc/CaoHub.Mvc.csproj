@@ -7,9 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\ReceiptManagement\Controllers\" />
     <Folder Include="Areas\ReceiptManagement\Models\" />
+    <Folder Include="Areas\ReceiptManagement\Mappers\" />
     <Folder Include="Areas\ReceiptManagement\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaoHub.Data\CaoHub.Data.csproj" />
   </ItemGroup>
 
 </Project>

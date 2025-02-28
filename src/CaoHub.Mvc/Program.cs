@@ -1,19 +1,41 @@
-var builder = WebApplication.CreateBuilder(args);
+using CaoHub.Data;
+using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// Load nearest .env file into environment variables.
+Env.Load(path: null, Env.TraversePath());
+
+var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+var services = builder.Services;
+
+services.AddControllersWithViews();
+
+services.AddDbContext<CaoHubDbContext>(o =>
+{
+    var connectionString = configuration.GetConnectionString("CaoHubDbContext")!
+        .Replace("${DB_PORT}", Environment.GetEnvironmentVariable("DB_PORT"))
+        .Replace("${DB_USER}", Environment.GetEnvironmentVariable("DB_USER"))
+        .Replace("${DB_USER_PASSWORD}", Environment.GetEnvironmentVariable("DB_USER_PASSWORD"));
+
+    o.UseSqlServer(connectionString);
+    o.EnableDetailedErrors(!builder.Environment.IsProduction());
+    o.EnableSensitiveDataLogging(builder.Environment.IsDevelopment());
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+if (app.Environment.IsProduction()) 
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseStaticFiles();
 
 app.UseRouting();

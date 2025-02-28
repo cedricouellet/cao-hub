@@ -1,32 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CaoHub.Data.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CaoHub.Data.ReceiptManagement.Models
 {
     /// <summary>
-    /// The entity representing a category of stores
+    /// The entity representing a category of stores.
     /// </summary>
-    public class StoreCategory
+    public class StoreCategory : LogicalDeleteEntityBase
     {
         /// <summary>
-        /// Gets or sets the ID
-        /// </summary>
-        [Key]
-        public int StoreCategoryId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name
+        /// Gets or sets the name of this store category.
         /// </summary>
         [Required]
-        [MaxLength(100)]
+        [MaxLength(50)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Gets or sets whether or not the store category is active
-        /// </summary>
-        public bool IsActive { get; set; } = true;
-
-        /// <summary>
-        /// Gets or sets the collection of stores
+        /// Gets or sets the collection of <see cref="Models.Store"/> which are part of this store category.
         /// </summary>
         public virtual ICollection<Store> Stores { get; set; } = [];
     }
