@@ -8,16 +8,6 @@ My module-based application suite, which I plan to grow over time.
 
 - [Receipt Management](/documentation/receipt-management.md)
 
-## Topics
-
-- .NET development using C# 
-- HTML, CSS and JavaScript for client-side design/code
-- JSON for AJAX communication between the backend and frontend
-- MVC architectural patterns
-- Razor markup for server-rendered content
-- Database design & migrations using Entity Framework Core
-- Docker for containerizing MSSQL servers 
-
 ## Requirements
 
 Requirements:
@@ -53,7 +43,7 @@ docker-compose up
 
 > If the application database and default users have not yet been initialized, it will do so at this time.
 
-### 2. Apply database migrations
+### 2. Apply REST API database migrations
 
 Inside the [src/CaoHub.Data](./src/CaoHub.Data/) project directory, run the following command in a terminal:
 
@@ -65,9 +55,13 @@ dotnet ef database update
 
 For more information on working with migrations (such as adding them), including how to revert migrations, refer to [Microsoft's documentation on the matter](https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli).
 
-### 3. Run the web application
+### 3. Run the REST API
 
-> If you want to change the default HTTP ports used by the web app, refer to the file located at [src/Caohub.Mvc/Properties/launchSettings.json](./src/CaoHub.Mvc/Properties/launchSettings.json).
+> If you want to change the default HTTP ports used by the web app, refer to the file located at [src/Caohub.Api/Properties/launchSettings.json](./src/CaoHub.Api/Properties/launchSettings.json).
 
-Build and run the project located at [src/CaoHub.Mvc](./src/CaoHub.Mvc/) using Visual Studio 2022 or the `dotnet run`/`dotnet watch run` command in a terminal.
+Build and run the project located at [src/CaoHub.Api](./src/CaoHub.Api/) using Visual Studio 2022 or the `dotnet run`/`dotnet watch run` command in a terminal.
+
+### 4. Run the React app
+
+> TODO
 

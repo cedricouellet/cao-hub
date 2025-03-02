@@ -1,6 +1,8 @@
-using CaoHub.Data;
+using CaoHub.Api.Data;
+using CaoHub.Api;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+using CaoHub.Api.Configuration;
 
 // Load .env file
 Env.Load(path: null, Env.TraversePath());
@@ -28,7 +30,7 @@ services.AddSwaggerGen();
 
 services.AddDbContext<CaoHubDbContext>(options =>
 {
-    var connectionString = configuration.GetConnectionString("CaoHubDbContext")!
+    var connectionString = configuration.GetConnectionString("CaoHubDbContext_User")!
         .Replace("${DB_PORT}", Environment.GetEnvironmentVariable("DB_PORT"))
         .Replace("${DB_USER}", Environment.GetEnvironmentVariable("DB_USER"))
         .Replace("${DB_USER_PASSWORD}", Environment.GetEnvironmentVariable("DB_USER_PASSWORD"));
@@ -36,6 +38,8 @@ services.AddDbContext<CaoHubDbContext>(options =>
     options.UseSqlServer(connectionString);
     options.EnableDetailedErrors(builder.Environment.IsDevelopment());
 });
+
+services.Configure<PaginationSettings>(configuration.GetSection("Pagination"));
 
 var app = builder.Build();
 
