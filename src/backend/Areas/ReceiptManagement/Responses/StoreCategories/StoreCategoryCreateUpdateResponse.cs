@@ -1,4 +1,4 @@
-﻿namespace CaoHub.Api.Areas.ReceiptManagement.Responses
+﻿namespace CaoHub.Api.Areas.ReceiptManagement.Responses.StoreCategories
 {
     public class StoreCategoryCreateUpdateResponse
     {

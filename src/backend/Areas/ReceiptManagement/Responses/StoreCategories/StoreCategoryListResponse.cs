@@ -1,6 +1,6 @@
 ﻿using CaoHub.Api.Responses;
 
-namespace CaoHub.Api.Areas.ReceiptManagement.Responses
+namespace CaoHub.Api.Areas.ReceiptManagement.Responses.StoreCategories
 {
     public record StoreCategoryListResponse : PaginationResponse
     {

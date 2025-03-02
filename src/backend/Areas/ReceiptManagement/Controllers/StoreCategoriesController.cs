@@ -1,6 +1,6 @@
 ﻿using CaoHub.Api.Areas.ReceiptManagement.Models;
-using CaoHub.Api.Areas.ReceiptManagement.Requests;
-using CaoHub.Api.Areas.ReceiptManagement.Responses;
+using CaoHub.Api.Areas.ReceiptManagement.Requests.StoreCategories;
+using CaoHub.Api.Areas.ReceiptManagement.Responses.StoreCategories;
 using CaoHub.Api.Configuration;
 using CaoHub.Api.Data;
 using Microsoft.AspNetCore.Mvc;

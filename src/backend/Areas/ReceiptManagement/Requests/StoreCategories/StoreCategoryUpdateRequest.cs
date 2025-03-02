@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CaoHub.Api.Areas.ReceiptManagement.Requests
+namespace CaoHub.Api.Areas.ReceiptManagement.Requests.StoreCategories
 {
     public record StoreCategoryUpdateRequest
     {
