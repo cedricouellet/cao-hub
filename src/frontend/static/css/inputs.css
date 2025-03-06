@@ -1,0 +1,15 @@
+label {
+    @apply text-dark-secondary;
+}
+
+input,
+textarea,
+select {
+    @apply outline py-2 px-3 bg-neutral-light-base text-dark outline-neutral-light-line rounded focus:outline-primary focus:outline-2 disabled:text-dark-disabled;
+}
+
+input.error,
+textarea.error,
+select.error {
+    @apply outline-danger focus:outline-danger;
+}

@@ -1,0 +1,46 @@
+@theme {
+    --color-neutral-light: #FFFFFF;
+    --color-neutral-light-base: #F8F9FC;
+    --color-neutral-light-secondary: #F1F3F9;
+    --color-neutral-light-line: #E1E6EF;
+  
+    --color-neutral-dark: #1B1F27;
+    --color-neutral-dark-base: #0A0D14;
+    --color-neutral-dark-secondary: #23272F;
+    --color-neutral-dark-line: #3F444D;
+  
+    --color-dark: #1D2433;
+    --color-dark-secondary: color-mix(in srgb, var(--color-dark), 20% white);
+    --color-dark-disabled: color-mix(in srgb, var(--color-dark), 35% white);
+  
+    --color-light: #FFFFFF;
+    --color-light-secondary: color-mix(in srgb, var(--color-light), 25% black);
+    --color-light-disabled: color-mix(in srgb, var(--color-light), 40% black);
+  
+    --color-primary: #2F6FED;
+    --color-primary-hover: color-mix(in srgb, var(--color-primary), 25% black);
+    --color-primary-pressed: color-mix(in srgb, var(--color-primary), 50% black);
+    --color-primary-light: color-mix(in srgb, var(--color-primary), 50% white);
+    --color-primary-bg: color-mix(in srgb, var(--color-primary), 90% white);
+  
+    --color-secondary: #8B54F7;
+    --color-secondary-hover: color-mix(in srgb, var(--color-secondary), 25% black);
+    --color-secondary-pressed: color-mix(in srgb, var(--color-secondary), 50% black);
+    --color-secondary-light: color-mix(in srgb, var(--color-secondary), 50% white);
+    --color-secondary-bg: color-mix(in srgb, var(--color-secondary), 90% white);
+  
+    --color-success: #08875D;
+    --color-success-hover: color-mix(in srgb, var(--color-success), 25% black);
+    --color-success-pressed: color-mix(in srgb, var(--color-success), 50% black);
+    --color-success-bg: color-mix(in srgb, var(--color-success), 90% white);
+  
+    --color-warning: #B25E09;
+    --color-warning-hover: color-mix(in srgb, var(--color-warning), 25% black);
+    --color-warning-pressed: color-mix(in srgb, var(--color-warning), 50% black);
+    --color-warning-bg: color-mix(in srgb, var(--color-warning), 90% white);
+  
+    --color-danger: #E02D3C;
+    --color-danger-hover: color-mix(in srgb, var(--color-danger), 25% black);
+    --color-danger-pressed: color-mix(in srgb, var(--color-danger), 50% black);
+    --color-danger-bg: color-mix(in srgb, var(--color-danger), 90% white);
+  }

@@ -1,0 +1,3 @@
+hr {
+    @apply border-neutral-light-line block w-full;
+}

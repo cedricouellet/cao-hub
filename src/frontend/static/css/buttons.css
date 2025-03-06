@@ -1,0 +1,27 @@
+button {
+    @apply py-2 px-4 text-sm font-[500] cursor-pointer rounded-full;
+}
+
+.btn-primary {
+    @apply bg-primary text-light hover:bg-primary-hover active:bg-primary-pressed
+}
+
+.btn-secondary {
+    @apply bg-secondary text-light hover:bg-secondary-hover active:bg-secondary-pressed
+}
+
+.btn-success {
+    @apply bg-success text-light hover:bg-success-hover active:bg-success-pressed
+}
+
+.btn-warning {
+    @apply bg-warning text-light hover:bg-warning-hover active:bg-warning-pressed
+}
+
+.btn-danger {
+    @apply bg-danger text-light hover:bg-danger-hover active:bg-warning-pressed
+}
+
+.btn-disabled {
+    @apply bg-light-disabled hover:bg-light-disabled bg-dark-disabled cursor-not-allowed;
+}

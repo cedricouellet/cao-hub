@@ -1,0 +1,15 @@
+.toast {
+    @apply outline outline-1 p-3 rounded;
+}
+
+.toast-success {
+    @apply text-success bg-success-bg outline-success;
+}
+
+.toast-warning {
+    @apply text-warning bg-warning-bg outline-warning;
+}
+
+.toast-danger {
+    @apply text-danger bg-danger-bg outline-danger;
+}

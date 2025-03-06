@@ -1,0 +1,16 @@
+@import 'boxicons';
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@import '../static/css/theme.css';
+@import '../static/css/buttons.css';
+@import '../static/css/inputs.css';
+@import '../static/css/fonts.css';
+@import '../static/css/toasts.css';
+@import '../static/css/misc.css';
+@import '../static/css/typography.css';
+
+body {
+  @apply text-dark bg-neutral-light;
+  font-family: 'Inter', sans-serif;
+}

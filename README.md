@@ -25,7 +25,7 @@ Copy [.example.env](./.example.env) file and rename it to ".env".
 
 Change the default values if you need to, and make sure to fill empty values, as they are required for the application and database to function whatsoever. 
 
-### 1. Start the containerized MSSQL database using Docker
+### 1. Setting up the database
 
 From the root of the repository, run the following command in a terminal: 
 
@@ -41,15 +41,10 @@ docker-compose up
 
 > If the application database and default users have not yet been initialized, it will do so at this time.
 
-### 2. Apply REST API database migrations
+### 2. Settings up the backend
 
 > TODO
 
-### 3. Run the REST API
+### 3. Setting up the frontend
 
 > TODO
-
-### 4. Run the React app
-
-> TODO
-
