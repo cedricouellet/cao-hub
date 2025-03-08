@@ -1,0 +1,15 @@
+﻿@model StoreCategoryCreateViewModel
+
+@{
+    ViewData["Title"] = "New Store Category";
+}
+
+<h1>New Store Category</h1>
+
+<form asp-action="Create" asp-antiforgery="true">
+   
+    <label asp-for="Name">Name</label>
+    <input asp-for="Name" />
+    @Html.ValidationMessageFor(x => x.Name)
+    <button type="submit">Submit</button>
+</form>

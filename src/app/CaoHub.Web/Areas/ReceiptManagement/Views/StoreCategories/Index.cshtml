@@ -1,0 +1,19 @@
+﻿@model StoreCategoryListViewModel
+
+@{
+    ViewData["Title"] = "Store Categories";
+}
+
+<h1>Store Categories</h1>
+
+<a asp-action="Create">Create</a>
+
+<ul>
+    @foreach (var storeCategory in Model.StoreCategories) 
+    {
+        <li>
+            <span>@storeCategory.Name</span>
+            <a asp-action="Delete" asp-route-id="@storeCategory.Id">Delete</a>
+        </li>
+    }
+</ul>
