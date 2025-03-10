@@ -1,9 +1,95 @@
 @import "tailwindcss";
 
 @theme {
-
+    --color-primary: theme(colors.indigo.600);
+    --color-primary-light: theme(colors.indigo.100);
+    --color-primary-dark: theme(colors.indigo.800);
+    --color-accent: theme(colors.violet.600);
+    --color-accent-light: theme(colors.violet.100);
+    --color-accent-dark: theme(colors.violet.800);
+    --color-background: theme(colors.gray.100);
+    --color-surface: theme(colors.white);
+    --color-border: theme(colors.slate.300);
+    --color-light: theme(colors.slate.100);
+    --color-light-light: theme(colors.slate.50);
+    --color-dark: theme(colors.slate.800);
+    --color-dark-light: theme(colors.slate.500);
+    --color-logo: theme(colors.indigo.200);
+    --color-muted: theme(colors.slate.500);
+    --color-error: theme(colors.red.700);
+    --font-logo: 'Rubik 80s Fade';
 }
 
 body {
+    @apply bg-background text-dark font-normal;
+    font-family: Inter;
+}
 
+h1 {
+    @apply text-4xl font-black;
+}
+
+h2 {
+    @apply text-3xl font-extrabold;
+}
+
+.btn-primary, .btn-secondary, .btn-light, .btn-dark {
+    @apply inline-block border-2 py-2 px-6 rounded-full text-base font-medium cursor-pointer transition-all duration-200 ease-in-out shadow-sm hover:shadow-md;
+}
+
+.btn-light {
+    @apply border-light text-light hover:bg-light hover:text-dark active:bg-light active:text-dark;
+}
+
+.btn-dark {
+    @apply border-dark text-dark hover:bg-dark hover:text-light active:bg-dark active:text-light;
+}
+
+.btn-primary {
+    @apply bg-primary border-primary text-light hover:bg-primary-dark active:bg-primary-dark hover:border-primary-dark active:border-primary-dark;
+}
+
+.btn-secondary {
+    @apply border-primary text-primary hover:bg-primary active:bg-primary hover:text-light active:text-light;
+}
+
+.btn-icon {
+    @apply text-dark-light hover:opacity-50 transition-all duration-200 ease-in-out text-xl;
+}
+
+label[for] {
+    @apply block text-muted text-sm ml-1;
+}
+
+input, select, textarea {
+    @apply py-2 px-2 outline outline-border shadow-sm rounded-lg focus:outline-2 focus:outline-primary focus:shadow-md transition-colors duration-75 ease-in-out;
+}
+
+.input-error {
+    @apply ml-1 mt-1 text-error text-sm block text-balance;
+}
+.input-helper-text {
+    @apply ml-1 text-muted text-sm block text-balance;
+}
+
+
+@font-face {
+    font-family: Inter;
+    src: url(/fonts/Inter/Inter.ttf);
+    font-style: normal;
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Inter Italic';
+    src: url(/fonts/Inter/Inter-Italic.ttf);
+    font-style: italic;
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Rubik 80s Fade';
+    src: url(/fonts/Rubik80sFade/Rubik80sFade.ttf);
+    font-style: normal;
+    font-weight: 400;
 }

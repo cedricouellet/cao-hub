@@ -65,6 +65,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var storeCategory = await _context.StoreCategories

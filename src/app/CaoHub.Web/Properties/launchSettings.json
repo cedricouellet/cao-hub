@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "HTTP": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -9,7 +9,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5254"
     },
-    "https": {
+    "HTTPS": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -17,6 +17,15 @@
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7010;http://localhost:5254"
+    },
+    "Standard Ports (80/443)": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://0.0.0.0:443;http://0.0.0.0:8080"
     },
     "IIS Express": {
       "commandName": "IISExpress",

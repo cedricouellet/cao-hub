@@ -4,16 +4,19 @@
     ViewData["Title"] = "Store Categories";
 }
 
-<h1>Store Categories</h1>
+<div class="p-4">
+    <div class="flex flex-row justify-between items-center w-full mb-3">
+        <h1>Store Categories</h1>
+        <a class="btn-primary" asp-action="Create" asp-controller="StoreCategories" asp-area="ReceiptManagement">Add</a>
+    </div>
 
-<a asp-action="Create">Create</a>
-
-<ul>
-    @foreach (var storeCategory in Model.StoreCategories) 
-    {
-        <li>
-            <span>@storeCategory.Name</span>
-            <a asp-action="Delete" asp-route-id="@storeCategory.Id">Delete</a>
-        </li>
-    }
-</ul>
+    <div class="flex flex-wrap gap-2">
+        @foreach (var storeCategory in Model.StoreCategories)
+        {
+            <div class="p-4 w-full items-center rounded-lg border border-border  flex justify-between">
+                <span>@storeCategory.Name</span>
+                <a asp-action="Delete" asp-route-id="@storeCategory.Id"><i class="btn-icon fa fa-trash"></i></a>
+            </div>
+        }
+    </div>
+</div>
