@@ -1,4 +1,5 @@
 ﻿using CaoHub.Web.Models;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,13 +28,15 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Models
         /// Gets or sets the unit price, pre-tax.
         /// </summary>
         [Required]
-        [Range(0, 999999.99)]
+        [Range(0, 999999.999)]
+        [Precision(9, 3)]
         public decimal UnitPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the unit discount amount, pre-tax.
         /// </summary>
-        [Range(0, 999999.99)]
+        [Range(0, 999999.999)]
+        [Precision(9, 3)]
         public decimal? UnitDiscount { get; set; }
 
         /// <summary>

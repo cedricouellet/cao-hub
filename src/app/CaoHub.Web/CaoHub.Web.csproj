@@ -39,4 +39,9 @@
 		<PackageReference Include="Tailwind.Extensions.AspNetCore" Version="1.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Areas\ReceiptManagement\Filters\" />
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
+
 </Project>

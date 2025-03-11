@@ -16,6 +16,7 @@
     --color-dark-light: theme(colors.slate.500);
     --color-logo: theme(colors.indigo.200);
     --color-muted: theme(colors.slate.500);
+    --color-label: theme(colors.slate.600);
     --color-error: theme(colors.red.700);
     --font-logo: 'Rubik 80s Fade';
 }
@@ -33,8 +34,12 @@ h2 {
     @apply text-3xl font-extrabold;
 }
 
+.btn-primary, .btn-secondary, .btn-light, .btn-dark, .btn-icon {
+    @apply cursor-pointer;
+}
+
 .btn-primary, .btn-secondary, .btn-light, .btn-dark {
-    @apply inline-block border-2 py-2 px-6 rounded-full text-base font-medium cursor-pointer transition-all duration-200 ease-in-out shadow-sm hover:shadow-md;
+    @apply inline-block border-2 py-2 px-6 rounded-full text-base font-medium transition-all duration-200 ease-in-out shadow-sm hover:shadow-md;
 }
 
 .btn-light {
@@ -58,18 +63,18 @@ h2 {
 }
 
 label[for] {
-    @apply block text-muted text-sm ml-1;
+    @apply block text-label text-sm ml-1 mb-1 w-full;
 }
 
 input, select, textarea {
-    @apply py-2 px-2 outline outline-border shadow-sm rounded-lg focus:outline-2 focus:outline-primary focus:shadow-md transition-colors duration-75 ease-in-out;
+    @apply py-2 px-2 w-full outline outline-border shadow-sm rounded-lg focus:outline-2 focus:outline-primary focus:shadow-md transition-colors duration-75 ease-in-out;
 }
 
 .input-error {
-    @apply ml-1 mt-1 text-error text-sm block text-balance;
+    @apply ml-1 mt-1 text-error text-sm block w-full;
 }
 .input-helper-text {
-    @apply ml-1 text-muted text-sm block text-balance;
+    @apply ml-1 text-muted text-sm block w-full;
 }
 
 

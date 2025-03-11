@@ -5,33 +5,33 @@ using Microsoft.AspNetCore.Mvc;
 namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
 {
     [Area("ReceiptManagement")]
-    public class StoreCategoriesController(StoreCategoryService storeCategoryService) : Controller
+    public class TaxesController(TaxService taxService) : Controller
     {
-        private readonly StoreCategoryService _storeCategoryService = storeCategoryService;
+        private readonly TaxService _taxService = taxService;
 
         public async Task<IActionResult> Index()
         {
-            var viewModel = await _storeCategoryService.GetListAsync();
-
+            var viewModel = await _taxService.GetListAsync();
+            
             return View(viewModel);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new StoreCategoryCreateViewModel());
+            return View(new TaxCreateViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(StoreCategoryCreateViewModel viewModel)
+        public async Task<IActionResult> Create(TaxCreateViewModel viewModel)
         {
             if (viewModel.Name != null && 
-                await _storeCategoryService.NameExistsAsync(viewModel.Name))
+                await _taxService.NameExistsAsync(viewModel.Name))
             {
                 ModelState.AddModelError(
-                    nameof(StoreCategoryCreateViewModel.Name), 
-                    "A store category with this name already exists.");
+                    nameof(TaxCreateViewModel.Name),
+                    "A tax with this name already exists.");
             }
 
             if (!ModelState.IsValid)
@@ -39,7 +39,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 return View(viewModel);
             }
 
-            await _storeCategoryService.CreateAsync(viewModel);
+            await _taxService.CreateAsync(viewModel);
 
             return RedirectToAction(nameof(Index));
         }
@@ -47,21 +47,16 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var viewModel = await _storeCategoryService.GetAsync(id);
+            var tax = await _taxService.GetAsync(id);
 
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
+            return View(tax);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-            var deleted = await _storeCategoryService.DeleteAsync(id);
+            var deleted = await _taxService.DeleteAsync(id);
 
             if (deleted == null)
             {

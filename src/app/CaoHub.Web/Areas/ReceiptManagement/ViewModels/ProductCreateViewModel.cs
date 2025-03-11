@@ -2,10 +2,10 @@
 
 namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
 {
-    public class StoreCategoryCreateViewModel
+    public class ProductCreateViewModel
     {
         [Required]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string? Name { get; set; }
     }
 }

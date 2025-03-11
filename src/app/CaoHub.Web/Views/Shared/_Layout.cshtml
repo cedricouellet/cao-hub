@@ -6,11 +6,12 @@
     <title>@ViewData["Title"] - CAO Hub</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     </environment>
     <environment include="Staging,Production">
         <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/styles.min.css" asp-append-version="true" />
     </environment>
-    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 </head>
 <body>
     <header class="sticky top-0 z-50 bg-dark text-light h-16 flex items-center justify-center shadow-sm">
@@ -21,10 +22,12 @@
     </main>
 
     <environment include="Development">
+        <script src="~/lib/htmx/htmx.js" asp-append-version="true"></script>
         <script src="~/lib/alpinejs/alpine.js" asp-append-version="true"></script>
         <script src="~/lib/fontawesome/js/all.js" asp-append-version="true"></script>
     </environment>
     <environment include="Staging,Production">
+        <script src="~/lib/htmx/htmx.min.js" asp-append-version="true"></script>
         <script src="~/lib/alpinejs/alpine.min.js" asp-append-version="true"></script>
         <script src="~/lib/fontawesome/js/all.min.js" asp-append-version="true"></script>
     </environment>

@@ -2,8 +2,8 @@
   "name": "app",
   "version": "1.0.0",
   "scripts": {
-    "css:watch": "npx @tailwindcss/cli -i ./wwwroot/css/site.css -o ./wwwroot/css/site.min.css --watch",
-    "css:build": "npx @tailwindcss/cli -i ./wwwroot/css/site.css -o ./wwwroot/css/site.min.css --minify"
+    "css:watch": "npx @tailwindcss/cli -i ./wwwroot/css/site.css -o ./wwwroot/css/styles.css --watch",
+    "css:build": "npx @tailwindcss/cli -i ./wwwroot/css/site.css -o ./wwwroot/css/styles.min.css --minify"
   },
   "author": "cedricouellet",
   "license": "AGPL-3.0-only",

@@ -114,10 +114,12 @@ namespace CaoHub.Web.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal?>("UnitDiscount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(9, 3)
+                        .HasColumnType("decimal(9,3)");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(9, 3)
+                        .HasColumnType("decimal(9,3)");
 
                     b.HasKey("Id");
 
@@ -226,7 +228,8 @@ namespace CaoHub.Web.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(6, 5)
+                        .HasColumnType("decimal(6,5)");
 
                     b.HasKey("Id");
 

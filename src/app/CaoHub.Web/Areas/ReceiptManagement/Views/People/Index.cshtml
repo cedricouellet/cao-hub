@@ -1,0 +1,22 @@
+﻿@model PersonListViewModel
+
+@{
+    ViewData["Title"] = "People";
+}
+
+<div class="p-4">
+    <div class="flex flex-row justify-between items-center w-full mb-3">
+        <h1>People</h1>
+        <a class="btn-primary" asp-action="Create" asp-controller="People" asp-area="ReceiptManagement">Add</a>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+        @foreach (var person in Model.People)
+        {
+            <div class="p-4 w-full items-center rounded-lg border border-border flex justify-between">
+                <span class="font-bold">@person.Name</span>
+                <a asp-action="Delete" asp-controller="People" asp-area="ReceiptManagement" asp-route-id="@person.Id"><i class="btn-icon fa fa-trash"></i></a>
+            </div>
+        }
+    </div>
+</div>

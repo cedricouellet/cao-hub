@@ -1,4 +1,5 @@
 ﻿using CaoHub.Web.Models;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace CaoHub.Web.Areas.ReceiptManagement.Models
@@ -25,7 +26,8 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Models
         /// Gets or sets the rate amount of this tax.
         /// </summary>
         [Required]
-        [Range(0.0, 1.0)]
+        [Range(0.00, 1.00)]
+        [Precision(6, 5)]
         public decimal Rate { get; set; }
 
         /// <summary>

@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
 {
     [Area("ReceiptManagement")]
-    public class StoreCategoriesController(StoreCategoryService storeCategoryService) : Controller
+    public class PeopleController(PersonService personService) : Controller
     {
-        private readonly StoreCategoryService _storeCategoryService = storeCategoryService;
+        private readonly PersonService _personService = personService;
 
         public async Task<IActionResult> Index()
         {
-            var viewModel = await _storeCategoryService.GetListAsync();
+            var viewModel = await _personService.GetListAsync();
 
             return View(viewModel);
         }
@@ -19,19 +19,19 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new StoreCategoryCreateViewModel());
+            return View(new PersonCreateViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(StoreCategoryCreateViewModel viewModel)
+        public async Task<IActionResult> Create(PersonCreateViewModel viewModel)
         {
-            if (viewModel.Name != null && 
-                await _storeCategoryService.NameExistsAsync(viewModel.Name))
+            if (viewModel.Name != null &&
+                await _personService.NameExistsAsync(viewModel.Name))
             {
                 ModelState.AddModelError(
-                    nameof(StoreCategoryCreateViewModel.Name), 
-                    "A store category with this name already exists.");
+                    nameof(PersonCreateViewModel.Name),
+                    "A person with this name already exists.");
             }
 
             if (!ModelState.IsValid)
@@ -39,7 +39,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 return View(viewModel);
             }
 
-            await _storeCategoryService.CreateAsync(viewModel);
+            await _personService.CreateAsync(viewModel);
 
             return RedirectToAction(nameof(Index));
         }
@@ -47,7 +47,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var viewModel = await _storeCategoryService.GetAsync(id);
+            var viewModel = await _personService.GetAsync(id);
 
             if (viewModel == null)
             {
@@ -61,7 +61,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
-            var deleted = await _storeCategoryService.DeleteAsync(id);
+            var deleted = await _personService.DeleteAsync(id);
 
             if (deleted == null)
             {

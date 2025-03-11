@@ -1,0 +1,28 @@
+﻿@model TaxListViewModel
+
+@{
+    ViewData["Title"] = "Taxes";
+}
+
+<div class="p-4">
+    <div class="flex flex-row justify-between items-center w-full mb-3">
+        <h1>Taxes</h1>
+        <a class="btn-primary" asp-action="Create" asp-controller="Taxes" asp-area="ReceiptManagement">Add</a>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+        @foreach (var tax in Model.Taxes)
+        {
+            <div class="p-4 w-full lg:w-auto rounded-lg border border-border flex flex-col flex-wrap justify-between gap-2">
+                <div class="flex flex-row justify-between">
+                    <span class="font-bold">@tax.Name</span>
+                    <span class="font-bold">@tax.Rate.ToString("P3")</span>
+                </div>
+                <span class="text-muted">@tax.Description</span>
+                <div class="flex justify-end">
+                    <a asp-action="Delete" asp-controller="Taxes" asp-area="ReceiptManagement" asp-route-id="@tax.Id"><i class="btn-icon fa fa-trash"></i></a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

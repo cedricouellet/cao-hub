@@ -1,3 +1,4 @@
+using CaoHub.Web.Areas.ReceiptManagement.Extensions;
 using CaoHub.Web.Data;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,6 @@ Env.Load(path: null, Env.TraversePath());
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var services = builder.Services;
-
-//if (builder.Environment.IsDevelopment())
-//{
-//    services.AddHostedService<TailwindHostedService>();
-//}
 
 services.AddControllersWithViews();
 
@@ -27,6 +23,8 @@ services.AddDbContext<CaoHubDbContext>(options =>
     options.UseSqlServer(connectionString);
     options.EnableDetailedErrors(builder.Environment.IsDevelopment());
 });
+
+services.AddReceiptManagementServices();
 
 var app = builder.Build();
 

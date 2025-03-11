@@ -9,11 +9,11 @@
         <h1>New Store Category</h1>
     </div>
 
-    <form asp-action="Create" asp-antiforgery="true">
+    <form asp-action="Create" asp-controller="StoreCategories" asp-area="ReceiptManagement" asp-antiforgery="true">
         <div class="flex flex-col gap-4">
             <div class="w-70">
                 <label asp-for="Name">Name*</label>
-                <input asp-for="Name" autocomplete="off" placeholder="Example: Groceries" />
+                <input asp-for="Name" autocomplete="off" placeholder="e.g. Groceries" />
                 <span class="input-error" asp-validation-for="Name"></span>
                 <span class="input-helper-text">Enter a unique name for the store category. It will later be available for use to categorize stores.</span>
             </div>

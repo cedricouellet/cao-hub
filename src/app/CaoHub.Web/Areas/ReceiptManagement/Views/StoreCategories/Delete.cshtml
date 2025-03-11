@@ -14,7 +14,7 @@
         <p>Data related to it will be kept to maintain data integrity, but will be hidden, therefore no longer accessible.</p>
     </div>
 
-    <form asp-action="ConfirmDelete" asp-route-id="@Model.Id" asp-antiforgery="true" method="post">
+    <form asp-action="ConfirmDelete" asp-controller="StoreCategories" asp-area="ReceiptManagement" asp-route-id="@Model.Id" asp-antiforgery="true" method="post">
         <div class="flex gap-2">
             <button class="btn-primary" type="submit">Yes, I'm sure</button>
             <a class="btn-secondary" asp-action="Index" asp-controller="StoreCategories" asp-area="ReceiptManagement">No, nevermind</a>

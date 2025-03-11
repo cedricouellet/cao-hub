@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaoHub.Web.Migrations
 {
     [DbContext(typeof(CaoHubDbContext))]
-    [Migration("20250308065130_InitialCreate")]
+    [Migration("20250310180640_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -117,10 +117,12 @@ namespace CaoHub.Web.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal?>("UnitDiscount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(9, 3)
+                        .HasColumnType("decimal(9,3)");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(9, 3)
+                        .HasColumnType("decimal(9,3)");
 
                     b.HasKey("Id");
 
@@ -229,7 +231,8 @@ namespace CaoHub.Web.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(6, 5)
+                        .HasColumnType("decimal(6,5)");
 
                     b.HasKey("Id");
 
