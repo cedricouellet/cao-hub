@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
+namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels.Taxes
 {
     public class TaxCreateViewModel
     {
@@ -13,6 +13,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
 
         [Required]
         [Range(0.0, 100.0)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:P3}")]
         public decimal? RatePercentage { get; set; }
     }
 }

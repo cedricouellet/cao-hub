@@ -10,8 +10,8 @@
     }
 }
 
-<div x-data="{ menuOpen: false }" class="h-full w-full">
-    <div x-show="menuOpen" class="fixed top-16 w-full bg-dark z-50 p-3 flex flex-col justify-center items-center gap-8">
+<div x-data="{ menuOpen: false }">
+    <div id="sidebar-menu" x-on:outsideclick="menuOpen = false" x-show="menuOpen" class="fixed top-0 right-0 w-30 lg:w-50 h-full bg-dark-secondary z-40 p-3 flex flex-col justify-center items-center gap-8 shadow-2xl" x-on:blur="menuOpen = false">
         <a asp-action="Index" asp-controller="Taxes" asp-area="ReceiptManagement" class="flex flex-col items-center gap-2 @(IsActiveUrl("Index", "Taxes", "ReceiptManagement") ? "text-muted" : "text-light")">
             <i class="fa-solid fa-money-bill text-xl"></i>
             <span class="text-xs">Taxes</span>
@@ -32,18 +32,14 @@
             <i class="fa-solid fa-boxes-stacked text-xl"></i>
             <span class="text-xs">Products</span>
         </a>
-    
-        <button class="text-center btn-icon text-light" x-on:click="menuOpen = false">
-            <i class="fa fa-xmark"></i>
-        </button>
     </div>
 
     <div class="mb-16">
         @RenderBody()
     </div>
 
-    <div class="fixed bottom-0 w-full h-16 z-50 flex justify-center">
-        <nav class="w-full px-12 bg-dark flex justify-around items-center text-center gap-4">
+    <div class="fixed left-0 bottom-0 w-full h-16 z-60 flex shadow-2xl">
+        <nav class="w-full px-12 bg-dark flex justify-center gap-16 items-center text-center">
             <a asp-action="Index" asp-controller="Home" asp-area="ReceiptManagement" class="flex flex-col gap-2 @(IsActiveUrl("Index", "Home", "ReceiptManagement") ? "text-muted" : "text-light")">
                 <i class="fa-solid fa-home text-xl"></i>
                 <span class="text-xs">Home</span>
@@ -59,3 +55,16 @@
         </nav>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        const sidebarMenu = document.getElementById("sidebar-menu");
+        document.addEventListener('click', (e) => {
+            if (sidebarMenu.style.display !== 'none' && e.target !== sidebarMenu) {
+                sidebarMenu.dispatchEvent(new Event('outsideclick'));
+            }
+        });
+    </script>
+}
+
+@await RenderSectionAsync("Scripts", required: false)

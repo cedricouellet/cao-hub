@@ -1,4 +1,4 @@
-﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels;
+﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels.Taxes;
 using CaoHub.Web.Data;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -48,7 +48,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetSelectListItemsAsync()
+        public async Task<IEnumerable<SelectListItem>> GetSelectListAsync()
         {
             return await _context.Taxes
                .AsNoTracking()

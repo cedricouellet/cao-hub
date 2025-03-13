@@ -4,26 +4,22 @@
     ViewData["Title"] = "New Product";
 }
 
-<div class="p-4">
-    <div class="mb-3">
-        <h1>New Product</h1>
+<h1 class="mb-3">New Product</h1>
+
+<form asp-action="Create" asp-controller="Products" asp-area="ReceiptManagement" asp-antiforgery="true">
+    <div class="flex flex-col gap-4">
+        <div>
+            <label asp-for="Name">Name*</label>
+            <input asp-for="Name" autocomplete="off" placeholder="e.g. Banana" />
+            <span class="input-error" asp-validation-for="Name"></span>
+            <span class="input-helper-text">Enter a unique name for the product. It will later be available for use in receipts.</span>
+        </div>
+        <div class="flex justify-center gap-2">
+            <button type="submit" class="btn-primary">Add</button>
+            <a role="link" asp-action="Index" asp-controller="Products" asp-area="ReceiptManagement" class="btn-secondary">Cancel</a>
+        </div>
     </div>
 
-    <form asp-action="Create" asp-controller="Products" asp-area="ReceiptManagement" asp-antiforgery="true">
-        <div class="flex flex-col gap-4">
-            <div class="w-70">
-                <label asp-for="Name">Name*</label>
-                <input asp-for="Name" autocomplete="off" placeholder="e.g. Banana" />
-                <span class="input-error" asp-validation-for="Name"></span>
-                <span class="input-helper-text">Enter a unique name for the product. It will later be available for use in receipts.</span>
-            </div>
-            <div class="flex gap-2">
-                <button type="submit" class="btn-primary">Add</button>
-                <a role="link" asp-action="Index" asp-controller="Products" asp-area="ReceiptManagement" class="btn-secondary">Cancel</a>
-            </div>
-        </div>
-     
-    </form>
-</div>
+</form>
 
 

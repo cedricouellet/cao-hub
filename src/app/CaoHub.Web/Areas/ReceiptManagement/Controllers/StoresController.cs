@@ -1,5 +1,5 @@
 ﻿using CaoHub.Web.Areas.ReceiptManagement.Services;
-using CaoHub.Web.Areas.ReceiptManagement.ViewModels;
+using CaoHub.Web.Areas.ReceiptManagement.ViewModels.Stores;
 using CaoHub.Web.Data;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +16,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
 
         private readonly StoreCategoryService _storeCategoryService = storeCategoryService;
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var viewModel = await _storeService.GetListAsync();
@@ -26,11 +27,11 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var storeCategorySelectListItems = await _storeCategoryService.GetSelectListItemsAsync();
+            var storeCategorySelectList = await _storeCategoryService.GetSelectListAsync();
             
             return View(new StoreCreateViewModel
             {
-                StoreCategoriesSelectListItems = storeCategorySelectListItems,
+                StoreCategories = storeCategorySelectList,
             });
         }
 
@@ -42,7 +43,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 await _storeService.NameExistsAsync(viewModel.Name))
             {
                 ModelState.AddModelError(
-                    nameof(StoreCreateViewModel.Name), 
+                    nameof(viewModel.Name), 
                     "A store with this name already exists.");
             }
 
@@ -50,19 +51,19 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 !await _storeCategoryService.ExistsAsync(viewModel.StoreCategoryId.Value))
             {
                 ModelState.AddModelError(
-                    nameof(StoreCreateViewModel.StoreCategoryId),
+                    nameof(viewModel.StoreCategoryId),
                     "The selected store category does not exist.");
             }
 
             if (!ModelState.IsValid)
             {
-                viewModel.StoreCategoriesSelectListItems = await _storeCategoryService.GetSelectListItemsAsync();
+                viewModel.StoreCategories = await _storeCategoryService.GetSelectListAsync();
                 return View(viewModel);
             }
 
             await _storeService.CreateAsync(viewModel);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
 
         }
 
@@ -90,7 +91,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 return NotFound();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
     }
 }

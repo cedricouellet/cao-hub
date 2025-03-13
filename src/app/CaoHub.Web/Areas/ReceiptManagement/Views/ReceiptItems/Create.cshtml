@@ -1,5 +1,60 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ReceiptItemCreateViewModel
+
 @{
+    ViewData["Title"] = "New Receipt Item";
 }
+
+<h1 class="mb-3">New Receipt Item</h1>
+
+<form asp-action="Create" asp-controller="ReceiptItems" asp-area="ReceiptManagement" asp-route-receiptId="@Model.ReceiptId" asp-antiforgery="true">
+    <div class="flex flex-col gap-4">
+        <div>
+            <label asp-for="ProductName">Product*</label>
+            <input asp-for="ProductName" autocomplete="off" placeholder="e.g. Banana" list="datalist-products" />
+            <datalist id="datalist-products">
+                @foreach (var product in Model.Products)
+                {
+                    <option value="@product.Text"></option>
+                }
+            </datalist>
+            <span class="input-error" asp-validation-for="ProductName" />
+            <span class="input-helper-text">Enter the name of the product for this receipt item. If the product you wish to select is not in the list, it will added after you submit the form.</span>
+        </div>
+        <div>
+            <label asp-for="UnitPrice">Unit Price*</label>
+            <input asp-for="UnitPrice" autocomplete="off" step="0.001" placeholder="e.g. 5.00" type="number" />
+            <span class="input-error" asp-validation-for="UnitPrice" />
+            <span class="input-helper-text">Enter the price per unit of this product.</span>
+        </div>
+        <div>
+            <label asp-for="UnitDiscount">Unit Discount</label>
+            <input asp-for="UnitDiscount" autocomplete="off" step="0.001" placeholder="e.g. 2.00" type="number" />
+            <span class="input-error" asp-validation-for="UnitDiscount" />
+            <span class="input-helper-text">(Optional) Enter the discount per unit of this product, if applicable.</span>
+        </div>
+        <div>
+            <label asp-for="Quantity">Quantity*</label>
+            <input asp-for="Quantity" autocomplete="off" step="1" placeholder="e.g. 3" type="number" />
+            <span class="input-error" asp-validation-for="Quantity" />
+            <span class="input-helper-text">(Optional) Enter the quantity of product purchased.</span>
+        </div>
+        <div>
+            <label asp-for="TaxIds">Taxes</label>
+            <select asp-for="TaxIds" asp-items="Model.Taxes" multiple></select>
+            <span class="input-error" asp-validation-for="TaxIds" />
+            <span class="input-helper-text">(Optional) Select the taxes that are applicable to this product. Selecting no taxes is interpreted as it not being taxable in any way.</span>
+            <span class="input-helper-text">Hold the CTRL (Windows/Linux) or Command (MacOS) key to select multiple options.</span>
+        </div>
+        <div>
+            <label asp-for="PeopleIds">People</label>
+            <select asp-for="PeopleIds" asp-items="Model.People" multiple></select>
+            <span class="input-error" asp-validation-for="People" />
+            <span class="input-helper-text">(Optional) Select the people that are sharing the cost of this receipt item. If left empty, it assumed that the person who originally paid the receipt will pay for it.</span>
+            <span class="input-helper-text">Hold the CTRL (Windows/Linux) or Command (MacOS) key to select multiple options.</span>
+        </div>
+        <div class="flex justify-center gap-2">
+            <button type="submit" class="btn-primary">Add</button>
+            <a role="link" asp-action="Index" asp-controller="ReceiptItems" asp-area="ReceiptManagement" asp-route-receiptId="@Model.ReceiptId" class="btn-secondary">Cancel</a>
+        </div>
+    </div>
+</form>

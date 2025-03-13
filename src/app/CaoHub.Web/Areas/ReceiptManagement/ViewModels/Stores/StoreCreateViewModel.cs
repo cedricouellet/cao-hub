@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
+namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels.Stores
 {
     public class StoreCreateViewModel
     {
@@ -12,6 +12,6 @@ namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
         [Required]
         public int? StoreCategoryId { get; set; }
 
-        public IEnumerable<SelectListItem> StoreCategoriesSelectListItems { get; set; } = [];
+        public IEnumerable<SelectListItem> StoreCategories { get; set; } = [];
     }
 }

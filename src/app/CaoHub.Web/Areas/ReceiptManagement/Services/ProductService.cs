@@ -1,4 +1,4 @@
-﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels;
+﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels.Products;
 using CaoHub.Web.Data;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -29,6 +29,16 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
             };
         }
 
+        public async Task<int?> GetIdAsync(string name)
+        {
+            return (await _context.Products
+                .AsNoTracking()
+                .Where(x => x.IsActive &&
+                            x.Name.ToLower() == name.Trim().ToLower())
+                .FirstOrDefaultAsync())
+                ?.Id;
+        }
+
         public Task<ProductViewModel?> GetAsync(int id)
         {
             return _context.Products
@@ -43,7 +53,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
                 .SingleOrDefaultAsync();
         } 
 
-        public async Task<IEnumerable<SelectListItem>> GetSelectListItemsAsync()
+        public async Task<IEnumerable<SelectListItem>> GetSelectListAsync()
         {
             return await _context.Products
                 .AsNoTracking()

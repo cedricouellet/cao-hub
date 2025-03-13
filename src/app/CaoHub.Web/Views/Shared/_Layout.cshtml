@@ -14,10 +14,12 @@
     </environment>
 </head>
 <body>
-    <header class="sticky top-0 z-50 bg-dark text-light h-16 flex items-center justify-center shadow-sm">
-        <a class="font-logo text-logo text-6xl" asp-action="Index" asp-controller="Home" asp-area="">CAOHUB</a>
+    <header class="sticky top-0 z-50 bg-dark text-light h-16 flex flex-col items-center justify-center shadow-sm">
+        <a class="font-logo text-logo text-6xl" asp-action="Index" asp-controller="Home" asp-area="">
+            CAOHUB
+        </a>
     </header>
-    <main role="main" class="w-full h-full">
+    <main role="main" class="w-full h-full p-3 lg:p-6 place-self-center w-full lg:w-150">
         @RenderBody()
     </main>
 

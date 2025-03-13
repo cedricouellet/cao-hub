@@ -1,14 +1,16 @@
 ﻿using CaoHub.Web.Areas.ReceiptManagement.Services;
-using CaoHub.Web.Areas.ReceiptManagement.ViewModels;
+using CaoHub.Web.Areas.ReceiptManagement.ViewModels.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
 {
     [Area("ReceiptManagement")]
+    [Route("[area]/[controller]")]
     public class ProductsController(ProductService productService) : Controller
     {
         private readonly ProductService _productService = productService;
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var viewModel = await _productService.GetListAsync();
@@ -16,13 +18,13 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
             return View(viewModel);
         }
 
-        [HttpGet]
+        [HttpGet("create")]
         public IActionResult Create()
         {
             return View(new ProductCreateViewModel());
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductCreateViewModel viewModel)
         {
@@ -30,7 +32,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 await _productService.NameExistsAsync(viewModel.Name))
             {
                 ModelState.AddModelError(
-                    nameof(ProductCreateViewModel.Name),
+                    nameof(viewModel.Name),
                     "A product with this name already exists.");
             }
 
@@ -41,10 +43,10 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
 
             await _productService.CreateAsync(viewModel);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpGet("{id}/delete")]
         public async Task<IActionResult> Delete(int id)
         {
             var viewModel = await _productService.GetAsync(id);
@@ -57,7 +59,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
+        [HttpPost("{id}/delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
@@ -68,7 +70,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Controllers
                 return NotFound();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
     }
 }

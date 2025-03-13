@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
+namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels.Products
 {
     public class ProductCreateViewModel
     {

@@ -1,8 +1,9 @@
-﻿namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
+﻿namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels.People
 {
-    public class StoreCategoryViewModel
+    public class PersonViewModel
     {
         public int Id { get; set; }
+
         public string Name { get; set; } = null!;
     }
 }

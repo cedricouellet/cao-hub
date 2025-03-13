@@ -11,6 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var services = builder.Services;
 
+services.AddRouting(options =>
+{
+    options.AppendTrailingSlash = false;
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+});
 services.AddControllersWithViews();
 
 services.AddDbContext<CaoHubDbContext>(options =>
@@ -43,12 +49,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "areas",
+    name: "Areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.MapReceiptManagementRoutes();
+
+app.MapDefaultControllerRoute();
 
 if (app.Environment.IsDevelopment())
 {

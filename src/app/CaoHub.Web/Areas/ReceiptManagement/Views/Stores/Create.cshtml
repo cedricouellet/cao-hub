@@ -4,32 +4,25 @@
     ViewData["Title"] = "New Store";
 }
 
-<div class="p-4">
-    <div class="mb-3">
-        <h1>New Store</h1>
-    </div>
+<h1 class="mb-3">New Store</h1>
 
-    <form asp-action="Create" asp-controller="Stores" asp-area="ReceiptManagement" asp-antiforgery="true">
-        <div class="flex flex-col gap-4">
-            <div class="w-70">
-                <label asp-for="Name">Name*</label>
-                <input asp-for="Name" autocomplete="off" placeholder="e.g. Costco" />
-                <span class="input-error" asp-validation-for="Name"></span>
-                <span class="input-helper-text">Enter a unique name for the store category. It will later be available for use to categorize stores.</span>
-            </div>
-            <div class="w-70">
-                <label asp-for="StoreCategoryId">Category*</label>
-                @Html.DropDownListFor(x => x.StoreCategoryId, Model.StoreCategoriesSelectListItems, "--")
-                <span class="input-error" asp-validation-for="StoreCategoryId"></span>
-                <span class="input-helper-text">Enter a category. It will later be used to group stores together.</span>
-            </div>
-            <div class="flex gap-2">
-                <button type="submit" class="btn-primary">Add</button>
-                <a role="link" asp-action="Index" asp-controller="Stores" asp-area="ReceiptManagement" class="btn-secondary">Cancel</a>
-            </div>
+<form asp-action="Create" asp-controller="Stores" asp-area="ReceiptManagement" asp-antiforgery="true">
+    <div class="flex flex-col gap-4">
+        <div>
+            <label asp-for="Name">Name*</label>
+            <input asp-for="Name" autocomplete="off" placeholder="e.g. Costco" />
+            <span class="input-error" asp-validation-for="Name"></span>
+            <span class="input-helper-text">Enter a unique name for the store category. It will later be available for use to categorize stores.</span>
         </div>
-
-    </form>
-</div>
-
-
+        <div>
+            <label asp-for="StoreCategoryId">Category*</label>
+            @Html.DropDownListFor(x => x.StoreCategoryId, Model.StoreCategories, "--")
+            <span class="input-error" asp-validation-for="StoreCategoryId"></span>
+            <span class="input-helper-text">Enter a category. It will later be used to group stores together.</span>
+        </div>
+        <div class="flex justify-center gap-2">
+            <button type="submit" class="btn-primary">Add</button>
+            <a role="link" asp-action="Index" asp-controller="Stores" asp-area="ReceiptManagement" class="btn-secondary">Cancel</a>
+        </div>
+    </div>
+</form>

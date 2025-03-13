@@ -1,4 +1,4 @@
-﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels;
+﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels.Stores;
 using CaoHub.Web.Data;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -47,12 +47,11 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetSelectListItemsAsync(string? query = null)
+        public async Task<IEnumerable<SelectListItem>> GetSelectListAsync()
         {
             return await _context.Stores
                .AsNoTracking()
                .Where(x => x.IsActive)
-               .Where(x => string.IsNullOrWhiteSpace(query) || x.Name.ToLower().StartsWith(query.Trim().ToLower()))
                .OrderBy(x => x.Name)
                .Select(x => new SelectListItem
                {
@@ -85,8 +84,8 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
             var entity = (await _context.Stores.AddAsync(new Models.Store
             {
                 Name = viewModel.Name!.Trim().Humanize(LetterCasing.Sentence),
-                IsActive = true,
                 StoreCategoryId = viewModel.StoreCategoryId!.Value,
+                IsActive = true,
             })).Entity;
 
             await _context.SaveChangesAsync();

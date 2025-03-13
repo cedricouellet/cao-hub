@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
+namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels.People
 {
-    public class StoreCategoryCreateViewModel
+    public class PersonCreateViewModel
     {
         [Required]
         [MaxLength(50)]

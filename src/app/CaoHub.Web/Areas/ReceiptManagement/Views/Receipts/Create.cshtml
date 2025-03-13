@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ReceiptCreateViewModel
+
 @{
+    ViewData["Title"] = "New Receipt";
 }
+
+<h1 class="mb-3">New Receipt</h1>
+
+<form asp-action="Create" asp-controller="Receipts" asp-area="ReceiptManagement" asp-antiforgery="true">
+    <div class="flex flex-col gap-4">
+        <div>
+            <label asp-for="Date">Date*</label>
+            <input asp-for="Date" autocomplete="off" />
+            <span class="input-error" asp-validation-for="Date" />
+            <span class="input-helper-text">Select the date on which the physical receipt was produced. This will help with categorization later on, and for archive-related purposes.</span>
+        </div>
+        <div>
+            <label asp-for="StoreId">Store*</label>
+            <select asp-for="StoreId" asp-items="Model.Stores">
+                <option>--</option>
+            </select>
+            <span class="input-error" asp-validation-for="StoreId" />
+            <span class="input-helper-text">Select the store in which the physical receipt was produced. This will help with categorization later on.</span>
+        </div>
+        <div>
+            <label asp-for="PaidByPersonId">Paid by person*</label>
+            <select asp-for="PaidByPersonId" asp-items="Model.People">
+                <option>--</option>
+            </select>
+            <span class="input-error" asp-validation-for="PaidByPersonId" />
+            <span class="input-helper-text">Select the person that paid the receipt. This will be taken into account when calculating the receipt to determine who owes what and to whom, if applicable.</span>
+        </div>
+        <div class="flex justify-center gap-2">
+            <button type="submit" class="btn-primary">Add</button>
+            <a role="link" asp-action="Index" asp-controller="Receipts" asp-area="ReceiptManagement" class="btn-secondary">Cancel</a>
+        </div>
+    </div>
+</form>

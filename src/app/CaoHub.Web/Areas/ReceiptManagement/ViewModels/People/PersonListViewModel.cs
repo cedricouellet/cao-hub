@@ -1,4 +1,4 @@
-﻿namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels
+﻿namespace CaoHub.Web.Areas.ReceiptManagement.ViewModels.People
 {
     public class PersonListViewModel
     {

@@ -40,7 +40,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Areas\ReceiptManagement\Filters\" />
+	  <Folder Include="Areas\Core\Models\" />
+	  <Folder Include="Areas\Core\Controllers\" />
+	  <Folder Include="Areas\Core\Extensions\" />
+	  <Folder Include="Areas\Core\Services\" />
 	  <Folder Include="Migrations\" />
 	</ItemGroup>
 

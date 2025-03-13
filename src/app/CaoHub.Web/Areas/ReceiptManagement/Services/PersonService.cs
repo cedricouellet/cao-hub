@@ -1,7 +1,5 @@
-﻿using CaoHub.Web.Areas.ReceiptManagement.Controllers;
-using CaoHub.Web.Areas.ReceiptManagement.ViewModels;
+﻿using CaoHub.Web.Areas.ReceiptManagement.ViewModels.People;
 using CaoHub.Web.Data;
-using Humanizer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +21,7 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
                  Name = x.Name,
              })
              .ToListAsync();
-
+            
             return new PersonListViewModel
             {
                 People = people
@@ -44,13 +42,11 @@ namespace CaoHub.Web.Areas.ReceiptManagement.Services
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetSelectListItemsAsync(string? query = null)
+        public async Task<IEnumerable<SelectListItem>> GetSelectListAsync()
         {
             return await _context.People
                .AsNoTracking()
                .Where(x => x.IsActive)
-               .Where(x => string.IsNullOrWhiteSpace(query) || 
-                           x.Name.ToLower().StartsWith(query.Trim().ToLower()))
                .OrderBy(x => x.Name)
                .Select(x => new SelectListItem
                {

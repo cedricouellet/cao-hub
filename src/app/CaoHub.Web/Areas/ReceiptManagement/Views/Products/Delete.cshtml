@@ -4,18 +4,17 @@
     ViewData["Title"] = "Delete Product";
 }
 
-<div class="p-4">
-    <div class="mb-3">
-        <h1>Delete Product</h1>
-    </div>
+<h1 class="mb-3">Delete Product</h1>
 
-    <div class="bg-accent-light text-accent border border-accent rounded-lg shadow-sm p-3 mb-3">
-        <p class="mb-3">Are you sure you wish to delete the product named "@Model.Name"?</p>
-        <p>Data related to it will be kept to maintain data integrity, but will be hidden, therefore no longer accessible.</p>
+<div class="flex flex-col gap-4">
+    <div class="bg-accent-light text-accent border border-accent rounded-lg shadow-sm p-3 flex flex-col gap-3">
+        <p class="font-bold">Are you sure you wish to delete the product named "@Model.Name"?</p>
+        <p class="text-justify">Data related to it will be kept to maintain data integrity.</p>
+        <p class="text-justify">However, it will be hidden, therefore no longer accessible.</p>
     </div>
 
     <form asp-action="ConfirmDelete" asp-controller="Products" asp-area="ReceiptManagement" asp-route-id="@Model.Id" asp-antiforgery="true" method="post">
-        <div class="flex gap-2">
+        <div class="flex justify-center gap-2">
             <button class="btn-primary" type="submit">Yes, I'm sure</button>
             <a class="btn-secondary" asp-action="Index" asp-controller="Products" asp-area="ReceiptManagement">No, nevermind</a>
         </div>
