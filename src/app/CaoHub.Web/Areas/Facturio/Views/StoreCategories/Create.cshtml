@@ -1,0 +1,23 @@
+﻿@inject IStringLocalizer<SharedResource> Loc
+@model StoreCategoryEditViewModel
+
+@{
+    ViewData["Title"] = Loc["Facturio_StoreCategories_Create"];
+}
+
+<h1 class="mb-3">@Loc["Facturio_StoreCategories_Create"]</h1>
+
+<form asp-action="Create" asp-antiforgery="true">
+    <div class="flex flex-col gap-4">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" autocomplete="off" placeholder="@Loc["Facturio_StoreCategories_Name_Placeholder"]" />
+            <span class="input-error" asp-validation-for="Name"></span>
+            <span class="input-helper-text">@Loc["Facturio_StoreCategories_Name_HelperText"]</span>
+        </div>
+        <div class="flex justify-center gap-2">
+            <button type="submit" class="btn-primary">@Loc["Add"]</button>
+            <a role="link" asp-action="Index" class="btn-secondary">@Loc["Cancel"]</a>
+        </div>
+    </div>
+</form>

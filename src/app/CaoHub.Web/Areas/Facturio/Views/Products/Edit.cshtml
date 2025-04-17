@@ -1,0 +1,25 @@
+﻿@inject IStringLocalizer<SharedResource> Loc
+@model ProductEditViewModel
+
+@{
+    ViewData["Title"] = Loc["Facturio_Products_Edit"];
+}
+
+<h1 class="mb-3">@Loc["Facturio_Products_Edit"]</h1>
+
+<form asp-action="Edit" method="post" asp-antiforgery="true">
+    <div class="flex flex-col gap-4">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" autocomplete="off" placeholder="@Loc["Facturio_Products_Name_Placeholder"]" />
+            <span class="input-error" asp-validation-for="Name"></span>
+            <span class="input-helper-text">@Loc["Facturio_Products_Name_HelperText"]</span>
+        </div>
+        <div class="flex justify-center gap-2">
+            <button type="submit" class="btn-primary">@Loc["Update"]</button>
+            <a role="link" asp-action="Index" class="btn-secondary">@Loc["Cancel"]</a>
+        </div>
+    </div>
+
+    @Html.HiddenFor(x => x.Id)
+</form>

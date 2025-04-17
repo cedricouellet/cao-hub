@@ -1,15 +1,21 @@
-﻿@{
-    ViewData["Title"] = "Home";
+﻿@inject IStringLocalizer<SharedResource> Loc
+
+@{
+    ViewData["Title"] = Loc["Home"];
 }
 
-<h1 class="mb-3">Apps</h1>
+<div class="flex justify-end mb-3">
+    <partial name="_LanguageSelectPartial" />
+</div>
+
+<h1 class="mb-3">@Loc["Apps"]</h1>
 
 <div class="flex flex-wrap items-baseline gap-3">
     <div class="border border-1 border-border rounded-lg p-3 w-full h-auto lg:w-150 lg:h-70 flex flex-col gap-3 shadow-xs">
-        <h2>Receipt Management</h2>
-        <p class="h-full text-muted">Description of the module that explains what it is used for, how it is useful what one could do with this.</p>
+        <h2>@Loc["Facturio_Title"]</h2>
+        <p class="h-full text-muted">@Loc["Facturio_Description"]</p>
         <div class="flex justify-end">
-            <a class="btn-icon" role="link" asp-action="Index" asp-controller="Home" asp-area="ReceiptManagement">
+            <a class="btn-icon" role="link" asp-action="Index" asp-controller="Home" asp-area="Facturio">
                 <i class="fa fa-arrow-right-long"></i>
             </a>
         </div>

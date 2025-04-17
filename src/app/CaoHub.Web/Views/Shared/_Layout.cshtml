@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@inject IStringLocalizer<SharedResource> Loc
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CAO Hub</title>
+    <title>@ViewData["Title"] - @Loc["AppName"]</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
@@ -16,10 +18,10 @@
 <body>
     <header class="sticky top-0 z-50 bg-dark text-light h-16 flex flex-col items-center justify-center shadow-sm">
         <a class="font-logo text-logo text-6xl" asp-action="Index" asp-controller="Home" asp-area="">
-            CAOHUB
+            @Loc["AppName"]
         </a>
     </header>
-    <main role="main" class="w-full h-full p-3 lg:p-6 place-self-center w-full lg:w-150">
+    <main role="main" class="w-full h-full p-3 md:p-6 place-self-center w-full md:w-150">
         @RenderBody()
     </main>
 

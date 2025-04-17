@@ -1,0 +1,33 @@
+﻿@inject IStringLocalizer<SharedResource> Loc
+@model StoreListViewModel
+
+@{
+    ViewData["Title"] = Loc["Facturio_Stores"];
+}
+
+<div class="flex justify-between items-center mb-3">
+    <h1>@Loc["Facturio_Stores"]</h1>
+    <a class="btn-primary" asp-action="Create">@Loc["Add"]</a>
+</div>
+
+<div class="flex flex-col gap-2">
+    @foreach (var store in Model.Stores)
+    {
+        <div class="p-3 rounded-lg border border-border flex flex-col justify-between gap-1">
+            <div class="flex justify-between">
+                <span class="font-bold">@Html.DisplayFor(x => store.Name)</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-muted">@Html.DisplayFor(x => store.StoreCategoryName)</span>
+                <div class="flex gap-3">
+                    <a asp-action="Edit" asp-route-id="@store.Id">
+                        <i class="btn-icon fa fa-edit"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@store.Id">
+                        <i class="btn-icon fa fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

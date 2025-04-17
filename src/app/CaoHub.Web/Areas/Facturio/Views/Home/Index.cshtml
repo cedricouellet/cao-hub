@@ -1,0 +1,7 @@
+﻿@using Microsoft.AspNetCore.Localization
+@inject IStringLocalizer<SharedResource> Loc
+@{
+    ViewData["Title"] = Loc["Facturio_Title"];
+}
+
+<h1 class="mb-3">@Loc["Facturio_Title"]</h1>
